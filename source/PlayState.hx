@@ -1465,7 +1465,7 @@ class PlayState extends MusicBeatState
 		//inCutscene = true; //this would stop the camera movement, oops
 
 		var tankman:FlxSprite = new FlxSprite(-20, 320);
-		tankman.frames = Paths.getSparrowAtlas('cutscenes/' + songName);
+		tankman.frames = Paths.getSparrowAtlas('cutscenes/' + songName, 'week7');
 		tankman.antialiasing = ClientPrefs.globalAntialiasing;
 		insert(members.indexOf(dadGroup) + 1, tankman);
 
@@ -1507,10 +1507,10 @@ class PlayState extends MusicBeatState
 				precacheList.set('killYou', 'sound');
 				precacheList.set('bfBeep', 'sound');
 				
-				var wellWellWell:FlxSound = new FlxSound().loadEmbedded(Paths.sound('wellWellWell'));
+				var wellWellWell:FlxSound = new FlxSound().loadEmbedded(Paths.sound('wellWellWell', 'week7'));
 				FlxG.sound.list.add(wellWellWell);
 
-				FlxG.sound.playMusic(Paths.music('DISTORTO'), 0, false);
+				FlxG.sound.playMusic(Paths.music('DISTORTO', 'week7'), 0, false);
 				FlxG.sound.music.fadeIn();
 
 				tankman.animation.addByPrefix('wellWell', 'TANK TALK 1 P1', 24, false);
@@ -1535,7 +1535,7 @@ class PlayState extends MusicBeatState
 					{
 						boyfriend.playAnim('singUP', true);
 						boyfriend.specialAnim = true;
-						FlxG.sound.play(Paths.sound('bfBeep'));
+						FlxG.sound.play(Paths.sound('bfBeep', 'week7'));
 					});
 
 					// Move camera to Tankman
@@ -1545,7 +1545,7 @@ class PlayState extends MusicBeatState
 						camFollow.y -= 100;
 
 						tankman.animation.play('killYou', true);
-						FlxG.sound.play(Paths.sound('killYou'));
+						FlxG.sound.play(Paths.sound('killYou', 'week7'));
 						
 						// We should just kill you but... what the hell, it's been a boring day... let's see what you've got!
 						new FlxTimer().start(6.1, function(tmr:FlxTimer)
@@ -1559,10 +1559,10 @@ class PlayState extends MusicBeatState
 				tankman.x += 40;
 				tankman.y += 10;
 
-				var tightBars:FlxSound = new FlxSound().loadEmbedded(Paths.sound('tankSong2'));
+				var tightBars:FlxSound = new FlxSound().loadEmbedded(Paths.sound('tankSong2', 'week7'));
 				FlxG.sound.list.add(tightBars);
 
-				FlxG.sound.playMusic(Paths.music('DISTORTO'), 0, false);
+				FlxG.sound.playMusic(Paths.music('DISTORTO', 'week7'), 0, false);
 				FlxG.sound.music.fadeIn();
 
 				new FlxTimer().start(0.01, function(tmr:FlxTimer) //Fixes sync????
@@ -1612,7 +1612,7 @@ class PlayState extends MusicBeatState
 				gfDance.animation.play('dance', true);
 				insert(members.indexOf(gfGroup) + 1, gfDance);
 
-				gfCutscene.frames = Paths.getSparrowAtlas('cutscenes/stressGF');
+				gfCutscene.frames = Paths.getSparrowAtlas('cutscenes/stressGF', 'week7');
 				gfCutscene.animation.addByPrefix('dieBitch', 'GF STARTS TO TURN PART 1', 24, false);
 				gfCutscene.animation.addByPrefix('getRektLmao', 'GF STARTS TO TURN PART 2', 24, false);
 				insert(members.indexOf(gfGroup) + 1, gfCutscene);
@@ -1629,7 +1629,7 @@ class PlayState extends MusicBeatState
 				boyfriendCutscene.animation.curAnim.finish();
 				insert(members.indexOf(boyfriendGroup) + 1, boyfriendCutscene);
 
-				var cutsceneSnd:FlxSound = new FlxSound().loadEmbedded(Paths.sound('stressCutscene'));
+				var cutsceneSnd:FlxSound = new FlxSound().loadEmbedded(Paths.sound('stressCutscene', 'week7'));
 				FlxG.sound.list.add(cutsceneSnd);
 
 				tankman.animation.addByPrefix('godEffingDamnIt', 'TANK TALK 3', 24, false);
@@ -1710,7 +1710,7 @@ class PlayState extends MusicBeatState
 				
 				new FlxTimer().start(19.5, function(tmr:FlxTimer)
 				{
-					tankman.frames = Paths.getSparrowAtlas('cutscenes/stress2');
+					tankman.frames = Paths.getSparrowAtlas('cutscenes/stress2', 'week7');
 					tankman.animation.addByPrefix('lookWhoItIs', 'TANK TALK 3', 24, false);
 					tankman.animation.play('lookWhoItIs', true);
 					tankman.x += 90;
