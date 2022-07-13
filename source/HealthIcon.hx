@@ -1,5 +1,6 @@
 package;
 
+import flixel.graphics.FlxGraphic;
 import flixel.FlxSprite;
 import openfl.utils.Assets as OpenFlAssets;
 
@@ -40,27 +41,26 @@ class HealthIcon extends FlxSprite
 			var name:String = 'icons/' + char;
 			if(!Paths.fileExists('images/' + name + '.png', IMAGE)) name = 'icons/icon-' + char; //Older versions of psych engine's support
 			if(!Paths.fileExists('images/' + name + '.png', IMAGE)) name = 'icons/icon-face'; //Prevents crash from missing icon
-			var file:Dynamic = Paths.image(name);
+			var file:FlxGraphic = Paths.image(name);//STOP USING DYANAMIC  JUST USE FLXGRAPHIC DAMM
 
 			loadGraphic(file); //Load stupidly first for getting the file size
-			var width2 = width;
-			if (width/3 == 150) {
-				loadGraphic(file, true, Math.floor(width / 3), Math.floor(150)); //Then load it fr // winning icons go br
-				iconOffsets[0] = (width - 150) / 3;
-				iconOffsets[1] = (width - 150) / 3;
-				iconOffsets[2] = (width - 150) / 3;
-			} else {
-				loadGraphic(file, true, Math.floor(width / 2), Math.floor(150)); //Then load it fr // winning icons go br
+			if(file.width == 450)
+			{
+				loadGraphic(file, true, Math.floor(width / 3), Math.floor(height)); //Then load it fr
 				iconOffsets[0] = (width - 150) / 2;
 				iconOffsets[1] = (width - 150) / 2;
+				iconOffsets[2] = (width - 150) / 2;
+				animation.add(char, [0, 1, 2], 0, false, isPlayer);
+			}
+			else 
+			{
+				loadGraphic(file, true, Math.floor(width / 2), Math.floor(height)); //Then load it fr
+				iconOffsets[0] = (width - 150) / 2;
+				iconOffsets[1] = (width - 150) / 2;
+				animation.add(char, [0, 1], 0, false, isPlayer);
 			}
 			
 			updateHitbox();
-			if (width2/3 == 150) {
-				animation.add(char, [0, 1, 2], 0, false, isPlayer);
-			} else {
-				animation.add(char, [0, 1], 0, false, isPlayer);
-			}
 			animation.play(char);
 			this.char = char;
 
